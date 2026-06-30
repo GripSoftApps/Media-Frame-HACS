@@ -4,7 +4,7 @@ Home Assistant custom integration for the [**Media Frame**](https://github.com/G
 
 [![Validate](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml/badge.svg)](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml)
 
-**Current release: v2.0.1**
+**Current release: v2.0.2**
 
 ## Quick install (HACS)
 

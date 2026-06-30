@@ -4,6 +4,5 @@
   "filename": "media_frame",
   "homeassistant": "2024.6.0",
   "render_readme": true,
-  "zip_release": false,
-  "country": ["SE"]
+  "zip_release": false
 }
