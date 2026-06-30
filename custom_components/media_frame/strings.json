@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Media Frame",
+        "description": "Connect to a Media Frame tablet on your LAN. Enable **Home Assistant / Web control** in Setup and set a REST token (at least 4 characters).",
+        "data": {
+          "host": "Tablet IP address",
+          "port": "REST port",
+          "token": "REST bearer token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the tablet. Check IP, port, Wi-Fi, and that REST control is enabled.",
+      "invalid_auth": "Invalid token. Use the same bearer token as in Setup → Web control.",
+      "unknown": "Unexpected error during setup."
+    },
+    "abort": {
+      "already_configured": "This tablet is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "app_version": { "name": "App version" },
+      "battery": { "name": "Battery" },
+      "cpu": { "name": "CPU usage" },
+      "roon_zones_count": { "name": "Roon zones" },
+      "musicid_mic_dbfs": { "name": "Lyssna mic level" }
+    },
+    "binary_sensor": {
+      "rest_online": { "name": "REST online" },
+      "slideshow_enabled": { "name": "Slideshow enabled" },
+      "roon_connected": { "name": "Roon connected" },
+      "appletv_connected": { "name": "Apple TV connected" },
+      "musicid_listening": { "name": "Lyssna active" },
+      "google_cast_available": { "name": "Google Cast devices" }
+    },
+    "switch": {
+      "slideshow_enabled": { "name": "Slideshow" },
+      "roon_enabled": { "name": "Roon integration" },
+      "apple_tv_enabled": { "name": "Apple TV integration" },
+      "musicid_enabled": { "name": "Lyssna själv" },
+      "google_devices_enabled": { "name": "Google Cast" },
+      "remember_last_played": { "name": "Remember last played" }
+    },
+    "button": {
+      "roon_connect": { "name": "Roon connect" },
+      "roon_pause": { "name": "Roon pause" },
+      "roon_play": { "name": "Roon play" },
+      "musicid_listen_now": { "name": "Lyssna now" },
+      "google_cast_discover": { "name": "Cast discover" },
+      "restart_app": { "name": "Restart app" }
+    },
+    "number": {
+      "slideshow_idle_sec": { "name": "Slideshow idle delay" },
+      "slideshow_image_sec": { "name": "Slideshow image duration" }
+    }
+  }
+}

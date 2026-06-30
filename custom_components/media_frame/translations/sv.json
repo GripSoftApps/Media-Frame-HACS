@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Media Frame",
+        "description": "Anslut till en Media Frame-surfplatta på LAN. Aktivera **Home Assistant / Web control** i Setup och sätt ett REST-lösenord (minst 4 tecken).",
+        "data": {
+          "host": "Surfplattans IP-adress",
+          "port": "REST-port",
+          "token": "REST bearer-token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan inte nå surfplattan. Kontrollera IP, port, Wi-Fi och att REST-styrning är påslagen.",
+      "invalid_auth": "Ogiltig token. Använd samma bearer-token som i Setup → Web control.",
+      "unknown": "Oväntat fel vid konfiguration."
+    },
+    "abort": {
+      "already_configured": "Den här surfplattan är redan konfigurerad."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Media Frame",
+  "content_in_root": false,
+  "filename": "media_frame",
+  "homeassistant": "2024.6.0",
+  "render_readme": true,
+  "zip_release": false,
+  "country": ["SE"]
+}
