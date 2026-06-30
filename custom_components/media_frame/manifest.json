@@ -3,10 +3,10 @@
   "name": "Media Frame",
   "codeowners": ["@Gripen77"],
   "config_flow": true,
-  "documentation": "https://github.com/GripSoftApps/Media-Frame-HACS",
+  "documentation": "https://github.com/GripSoftApps/home-assistant-media-frame",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/GripSoftApps/Media-Frame-HACS/issues",
+  "issue_tracker": "https://github.com/GripSoftApps/home-assistant-media-frame/issues",
   "requirements": [],
-  "version": "2.0.3"
+  "version": "2.0.4"
 }
