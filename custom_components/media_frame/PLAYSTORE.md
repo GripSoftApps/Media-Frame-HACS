@@ -23,19 +23,14 @@ Group control can also start the HTTP server when `groupControlEnabled` is true 
 | Endpoint | Play Store | HA integration usage |
 |----------|------------|----------------------|
 | `GET /api/v1/health` | Allowed | Config validation, sensors |
-| `GET /api/v1/settings` | Allowed | Switches, numbers |
-| `POST /api/v1/settings` | Allowed | Switches, numbers, `patch_settings` service |
+| `GET /api/v1/settings` | Allowed | Switches, selects, numbers, text |
+| `POST /api/v1/settings` | Allowed | All setting entities, `patch_settings` service |
 | `GET /api/v1/{integration}/status` | Allowed | Binary sensors (not YouTube) |
 | `GET /api/v1/roon/zones` | Allowed | Roon zone count sensor |
 | `GET /api/v1/group/*` | Allowed | Device identity (optional) |
-| `POST /api/v1/roon/connect` | Allowed | Button |
-| `POST /api/v1/roon/transport` | Allowed | Play/pause buttons, service |
-| `POST /api/v1/musicid/listenNow` | Allowed | Button |
-| `POST /api/v1/googledevices/discover` | Allowed | Button |
-| `POST /api/v1/system/restartApp` | Allowed | Button |
-| `GET /api/v1/integration/action-result` | Allowed | Action polling |
+| `GET /api/v1/integration/action-result` | Allowed | `call_action` service (advanced) |
 
-## Blocked on Play Store (not used by v1 integration)
+## Blocked on Play Store (not used by v2 integration)
 
 | Path | Reason |
 |------|--------|
@@ -57,6 +52,6 @@ Play Store builds strip YouTube keys from persisted settings. Patching `youtubeE
 3. Set password (save settings)
 4. Confirm from a PC on LAN:  
    `curl -H "Authorization: Bearer YOUR_TOKEN" http://TABLET_IP:8787/api/v1/health`
-5. Add integration in HA with same host/port/password
+5. Add integration in HA with same host/port/token
 
 If step 4 returns `401`, fix the password/token. If connection refused, Web control is off or wrong port/firewall.

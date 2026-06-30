@@ -6,15 +6,11 @@ from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 from .coordinator import MediaFrameCoordinator
-
-NUMBER_SETTINGS: tuple[tuple[str, str, float, float, float, str], ...] = (
-    ("slideshow_idle_sec", "slideshowIdleSec", 3, 600, 1, "s"),
-    ("slideshow_image_sec", "slideshowImageSec", 3, 120, 1, "s"),
-)
+from .entity import MediaFrameSettingEntity
+from .ha_settings import SETTING_DEFS_BY_KIND
 
 
 async def async_setup_entry(
@@ -24,38 +20,26 @@ async def async_setup_entry(
 ) -> None:
     coordinator: MediaFrameCoordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
     async_add_entities(
-        MediaFrameSettingNumber(coordinator, t_key, s_key, min_v, max_v, step, unit)
-        for t_key, s_key, min_v, max_v, step, unit in NUMBER_SETTINGS
+        MediaFrameSettingNumber(coordinator, definition)
+        for definition in SETTING_DEFS_BY_KIND["number"]
     )
 
 
-class MediaFrameSettingNumber(CoordinatorEntity[MediaFrameCoordinator], NumberEntity):
-    """Number entity mapped to an integer setting."""
+class MediaFrameSettingNumber(MediaFrameSettingEntity, NumberEntity):
+    """Number entity mapped to an integer/float setting."""
 
-    def __init__(
-        self,
-        coordinator: MediaFrameCoordinator,
-        translation_key: str,
-        setting_key: str,
-        min_value: float,
-        max_value: float,
-        step: float,
-        unit: str,
-    ) -> None:
-        super().__init__(coordinator)
-        self._setting_key = setting_key
-        self._attr_translation_key = translation_key
-        self._attr_unique_id = f"{coordinator.config_entry.entry_id}_num_{setting_key}"
-        self._attr_native_min_value = min_value
-        self._attr_native_max_value = max_value
-        self._attr_native_step = step
-        self._attr_native_unit_of_measurement = unit
+    def __init__(self, coordinator: MediaFrameCoordinator, definition) -> None:
+        super().__init__(coordinator, definition)
+        self._attr_native_min_value = definition.min_value
+        self._attr_native_max_value = definition.max_value
+        self._attr_native_step = definition.step
+        if definition.unit:
+            self._attr_native_unit_of_measurement = definition.unit
         self._attr_mode = NumberMode.BOX
-        self._attr_device_info = coordinator.device_info
 
     @property
     def native_value(self) -> float | None:
-        raw = self.coordinator.data.settings.get(self._setting_key)
+        raw = self._raw_setting_value()
         if raw is None:
             return None
         try:
@@ -64,5 +48,6 @@ class MediaFrameSettingNumber(CoordinatorEntity[MediaFrameCoordinator], NumberEn
             return None
 
     async def async_set_native_value(self, value: float) -> None:
-        await self.coordinator.api.patch_settings({self._setting_key: round(value)})
+        payload = round(value) if self._definition.step == 1 else value
+        await self.coordinator.api.patch_settings({self._setting_key: payload})
         await self.coordinator.async_request_refresh()

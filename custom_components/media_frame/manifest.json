@@ -1,12 +1,12 @@
 {
   "domain": "media_frame",
   "name": "Media Frame",
-  "codeowners": ["@Gripen77"],
+  "codeowners": ["@mediaframe-app"],
   "config_flow": true,
-  "documentation": "https://github.com/GripSoftApps/Media-Frame-HACS",
+  "documentation": "https://github.com/mediaframe-app/mediaframe",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/GripSoftApps/Media-Frame-HACS/issues",
+  "issue_tracker": "https://github.com/mediaframe-app/mediaframe/issues",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

@@ -67,6 +67,15 @@ class MediaFrameSensorEntity(CoordinatorEntity[MediaFrameCoordinator], SensorEnt
         self.entity_description = description
         self._attr_unique_id = f"{coordinator.config_entry.entry_id}_{description.key}"
         self._attr_device_info = coordinator.device_info
+        self._attr_has_entity_name = True
+        _SENSOR_NAMES = {
+            "app_version": "App version",
+            "battery": "Battery",
+            "cpu": "CPU usage",
+            "roon_zones_count": "Roon zones",
+            "musicid_mic_dbfs": "Lyssna mic level",
+        }
+        self._attr_name = _SENSOR_NAMES.get(description.key, description.key)
 
     @property
     def native_value(self) -> str | int | float | None:

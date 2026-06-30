@@ -75,6 +75,16 @@ class MediaFrameBinarySensor(CoordinatorEntity[MediaFrameCoordinator], BinarySen
         self.entity_description = description
         self._attr_unique_id = f"{coordinator.config_entry.entry_id}_{description.key}"
         self._attr_device_info = coordinator.device_info
+        self._attr_has_entity_name = True
+        _BINARY_NAMES = {
+            "rest_online": "REST online",
+            "slideshow_enabled": "Slideshow active",
+            "roon_connected": "Roon connected",
+            "appletv_connected": "Apple TV connected",
+            "musicid_listening": "Lyssna active",
+            "google_cast_available": "Google Cast devices",
+        }
+        self._attr_name = _BINARY_NAMES.get(description.key, description.key)
 
     @property
     def is_on(self) -> bool | None:

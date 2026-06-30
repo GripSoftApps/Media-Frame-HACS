@@ -19,5 +19,489 @@
     "abort": {
       "already_configured": "Den här surfplattan är redan konfigurerad."
     }
+  },
+  "entity": {
+    "switch": {
+      "ss_slideshow": {
+        "name": "Skärmsläckare"
+      },
+      "ss_clock_overlay_color": {
+        "name": "Skärmsläckare · Klocka använder färg"
+      },
+      "ss_show_date": {
+        "name": "Skärmsläckare · Visa datum"
+      },
+      "ss_night_mode": {
+        "name": "Skärmsläckare · Nattläge"
+      },
+      "ss_show_clock": {
+        "name": "Skärmsläckare · Visa klocka"
+      },
+      "ss_clock_overlay": {
+        "name": "Skärmsläckare · Klocka ovanpå bild"
+      },
+      "ss_digital_clock_v2": {
+        "name": "Skärmsläckare · Digital klocka v2"
+      },
+      "music_title_marquee": {
+        "name": "Musik · Rullande titel"
+      },
+      "music_text_shadow": {
+        "name": "Musik · Textskugga"
+      },
+      "music_bottom_scrim": {
+        "name": "Musik · Nedre gradient"
+      },
+      "music_cover_shadow": {
+        "name": "Musik · Omslagsskugga"
+      },
+      "music_youtube_mv": {
+        "name": "Musik · YouTube musikvideo"
+      },
+      "video_title_marquee": {
+        "name": "Video · Rullande titel"
+      },
+      "video_bottom_scrim": {
+        "name": "Video · Nedre gradient"
+      },
+      "video_show_logo": {
+        "name": "Video · Visa applogotyp"
+      },
+      "misc_immersive_ui": {
+        "name": "Helskärmsläge (system-UI)"
+      },
+      "misc_hide_idle_bg": {
+        "name": "Dölj bakgrund i viloläge"
+      },
+      "misc_osd_controls": {
+        "name": "OSD-kontroller"
+      },
+      "misc_autostart": {
+        "name": "Starta vid uppstart"
+      },
+      "lux_enabled": {
+        "name": "Adaptiv ljusstyrka"
+      },
+      "integ_roon": {
+        "name": "Integration · Roon"
+      },
+      "integ_apple_tv": {
+        "name": "Integration · Apple TV"
+      },
+      "integ_musicid": {
+        "name": "Integration · Lyssna själv"
+      },
+      "integ_google_cast": {
+        "name": "Integration · Google Cast"
+      },
+      "integ_spotify": {
+        "name": "Integration · Spotify"
+      },
+      "integ_afterburner": {
+        "name": "Integration · MSI Afterburner"
+      },
+      "integ_wiim": {
+        "name": "Integration · WiiM"
+      },
+      "integ_naim": {
+        "name": "Integration · NAIM"
+      },
+      "integ_eversolo": {
+        "name": "Integration · Eversolo"
+      },
+      "integ_youtube": {
+        "name": "Integration · YouTube"
+      },
+      "integ_musicid_mic_indicator": {
+        "name": "Lyssna · Visa mic-indikator"
+      },
+      "integ_youtube_badge": {
+        "name": "YouTube · Spelar-märke"
+      }
+    },
+    "select": {
+      "ss_clock_mode": {
+        "name": "Skärmsläckare · Klockläge",
+        "state": {
+          "images_only": "Bilder",
+          "clock_only": "Klocka",
+          "images_with_clock": "Bilder med klocka"
+        }
+      },
+      "ss_clock_style": {
+        "name": "Skärmsläckare · Klockstil",
+        "state": {
+          "analog": "Analog",
+          "digital": "Digital",
+          "digital_v2": "Digital v2"
+        }
+      },
+      "ss_fit_mode": {
+        "name": "Skärmsläckare · Bildpassning",
+        "state": {
+          "cover": "Fyll",
+          "contain": "Passa in"
+        }
+      },
+      "ss_clock_vertical": {
+        "name": "Skärmsläckare · Klocka vertikalt",
+        "state": {
+          "top": "Upptill",
+          "bottom": "Nertill"
+        }
+      },
+      "ss_clock_horizontal": {
+        "name": "Skärmsläckare · Klocka horisontellt",
+        "state": {
+          "left": "Vänster",
+          "right": "Höger"
+        }
+      },
+      "ss_clock_overlay_size": {
+        "name": "Skärmsläckare · Klockstorlek",
+        "state": {
+          "default": "Standard",
+          "large": "Större"
+        }
+      },
+      "ss_weather_mode": {
+        "name": "Skärmsläckare · Väder",
+        "state": {
+          "off": "Av",
+          "color": "På",
+          "mono": "Svart/vit"
+        }
+      },
+      "music_style_mode": {
+        "name": "Musik · Stil",
+        "state": {
+          "advanced": "Modern",
+          "simple": "Basic",
+          "basic": "Minimal",
+          "custom1": "Egen 1",
+          "custom2": "Egen 2",
+          "custom3": "Egen 3"
+        }
+      },
+      "music_backdrop": {
+        "name": "Musik · Bakgrundsbild",
+        "state": {
+          "off": "Av",
+          "simple": "Standard",
+          "original": "Original",
+          "fancy": "Fancy"
+        }
+      },
+      "music_fullscreen_animation": {
+        "name": "Musik · Helskärmsanimation",
+        "state": {
+          "off": "Av",
+          "vinyl": "Vinyl",
+          "micVu": "Mic VU",
+          "vintageEqBars": "Vintage EQ"
+        }
+      },
+      "music_mic_vu_gain": {
+        "name": "Musik · VU-känslighet",
+        "state": {
+          "gain1": "×1",
+          "gain1_4": "×1,4",
+          "gain1_7": "×1,7"
+        }
+      },
+      "music_vintage_eq_gain": {
+        "name": "Musik · Vintage EQ-känslighet",
+        "state": {
+          "gain1": "×1",
+          "gain1_4": "×1,4",
+          "gain1_7": "×1,7"
+        }
+      },
+      "music_album_cover_style": {
+        "name": "Musik · Albumomslag stil",
+        "state": {
+          "default": "Standard",
+          "vinylAnimation": "Animerad"
+        }
+      },
+      "music_eq_style": {
+        "name": "Musik · EQ-stil",
+        "state": {
+          "off": "Av",
+          "naturalWaveColor": "Färgade",
+          "naturalWave": "Standard"
+        }
+      },
+      "music_eq_mode": {
+        "name": "Musik · EQ-läge",
+        "state": {
+          "liveMic": "Live mic",
+          "fake": "Fake"
+        }
+      },
+      "music_eq_size": {
+        "name": "Musik · EQ-storlek",
+        "state": {
+          "default": "Standard",
+          "plus40": "+40%",
+          "plus60": "+60%"
+        }
+      },
+      "music_eq_align": {
+        "name": "Musik · EQ-justering",
+        "state": {
+          "left": "Vänster",
+          "right": "Höger"
+        }
+      },
+      "music_metadata_size": {
+        "name": "Musik · Textstorlek",
+        "state": {
+          "off": "Av",
+          "minus25": "−25%",
+          "minus15": "−15%",
+          "default": "Standard",
+          "plus10": "+10%",
+          "plus25": "+25%",
+          "plus35": "+35%",
+          "plus45": "+45%"
+        }
+      },
+      "music_metadata_align": {
+        "name": "Musik · Textjustering",
+        "state": {
+          "left": "Vänster",
+          "right": "Höger"
+        }
+      },
+      "music_metadata_vertical": {
+        "name": "Musik · Text vertikal offset",
+        "state": {
+          "default": "0",
+          "up1": "1",
+          "up2": "2",
+          "up3": "3",
+          "up4": "4",
+          "up5": "5",
+          "up6": "6",
+          "up7": "7",
+          "up8": "8",
+          "up9": "9",
+          "up10": "10",
+          "up11": "11",
+          "up12": "12",
+          "down1": "−1",
+          "down2": "−2",
+          "down3": "−3",
+          "down4": "−4"
+        }
+      },
+      "music_cover_corner": {
+        "name": "Musik · Omslag hörn",
+        "state": {
+          "left": "Vänster",
+          "right": "Höger"
+        }
+      },
+      "music_cover_size": {
+        "name": "Musik · Omslagsstorlek",
+        "state": {
+          "off": "Av",
+          "minus50": "−50%",
+          "minus40": "−40%",
+          "min": "−30%",
+          "small": "−20%",
+          "default": "0%",
+          "large": "+20%",
+          "max": "+30%"
+        }
+      },
+      "music_zone_label": {
+        "name": "Musik · Zonetikett",
+        "state": {
+          "off": "Av",
+          "on": "På",
+          "bigger": "Större"
+        }
+      },
+      "music_progress_bar": {
+        "name": "Musik · Förloppsindikator",
+        "state": {
+          "off": "Av",
+          "on": "På",
+          "blue": "Blå"
+        }
+      },
+      "video_style_mode": {
+        "name": "Video · Tema",
+        "state": {
+          "simple": "Basic",
+          "advanced": "Modern"
+        }
+      },
+      "video_backdrop_fit": {
+        "name": "Video · Bakgrundspassning",
+        "state": {
+          "cover": "Fyll",
+          "contain": "Passa in"
+        }
+      },
+      "video_metadata_size": {
+        "name": "Video · Textstorlek",
+        "state": {
+          "minus25": "−25%",
+          "minus15": "−15%",
+          "default": "Standard",
+          "plus10": "+10%",
+          "plus25": "+25%",
+          "plus35": "+35%",
+          "plus45": "+45%"
+        }
+      },
+      "video_metadata_align": {
+        "name": "Video · Textjustering",
+        "state": {
+          "left": "Vänster",
+          "right": "Höger"
+        }
+      },
+      "video_metadata_vertical": {
+        "name": "Video · Text vertikal offset",
+        "state": {
+          "default": "0",
+          "up1": "1",
+          "up2": "2",
+          "up3": "3",
+          "down1": "−1",
+          "down2": "−2",
+          "down3": "−3"
+        }
+      },
+      "video_zone_label": {
+        "name": "Video · Zonetikett",
+        "state": {
+          "off": "Av",
+          "on": "På",
+          "bigger": "Större"
+        }
+      },
+      "video_progress_bar": {
+        "name": "Video · Förloppsindikator",
+        "state": {
+          "off": "Av",
+          "on": "På",
+          "blue": "Blå"
+        }
+      },
+      "misc_status_panel": {
+        "name": "Statuspanel",
+        "state": {
+          "statusBar": "Statusrad",
+          "panel": "Panel",
+          "off": "Av"
+        }
+      }
+    },
+    "number": {
+      "ss_idle_delay": {
+        "name": "Skärmsläckare · Väntetid"
+      },
+      "ss_image_duration": {
+        "name": "Skärmsläckare · Bildtid"
+      },
+      "display_inset_horizontal": {
+        "name": "Visningsyta · Horisontell underskanning"
+      },
+      "display_inset_vertical": {
+        "name": "Visningsyta · Vertikal underskanning"
+      },
+      "misc_hud_auto_hide": {
+        "name": "Tid innan GUI döljs"
+      },
+      "misc_setup_auto_close": {
+        "name": "Setup stängs automatiskt"
+      },
+      "lux_range_1": {
+        "name": "Ljusstyrka · 0–7 lux"
+      },
+      "lux_range_2": {
+        "name": "Ljusstyrka · 8–50 lux"
+      },
+      "lux_range_3": {
+        "name": "Ljusstyrka · 51–200 lux"
+      },
+      "lux_range_4": {
+        "name": "Ljusstyrka · 201–500 lux"
+      },
+      "lux_range_5": {
+        "name": "Ljusstyrka · 500+ lux"
+      }
+    },
+    "text": {
+      "ss_clock_color": {
+        "name": "Skärmsläckare · Klockfärg"
+      },
+      "ss_clock_color_analog": {
+        "name": "Skärmsläckare · Analog klockfärg"
+      },
+      "ss_clock_color_digital": {
+        "name": "Skärmsläckare · Digital klockfärg"
+      },
+      "ss_night_from": {
+        "name": "Skärmsläckare · Nattläge från"
+      },
+      "ss_night_to": {
+        "name": "Skärmsläckare · Nattläge till"
+      },
+      "music_title_color": {
+        "name": "Musik · Titelfärg"
+      },
+      "music_artist_color": {
+        "name": "Musik · Artistfärg"
+      },
+      "video_title_color": {
+        "name": "Video · Titelfärg"
+      },
+      "video_other_text_color": {
+        "name": "Video · Övrig textfärg"
+      }
+    },
+    "sensor": {
+      "app_version": {
+        "name": "Appversion"
+      },
+      "battery": {
+        "name": "Batteri"
+      },
+      "cpu": {
+        "name": "CPU-belastning"
+      },
+      "roon_zones_count": {
+        "name": "Roon-zoner"
+      },
+      "musicid_mic_dbfs": {
+        "name": "Lyssna mic-nivå"
+      }
+    },
+    "binary_sensor": {
+      "rest_online": {
+        "name": "REST online"
+      },
+      "slideshow_enabled": {
+        "name": "Skärmsläckare aktiv"
+      },
+      "roon_connected": {
+        "name": "Roon ansluten"
+      },
+      "appletv_connected": {
+        "name": "Apple TV ansluten"
+      },
+      "musicid_listening": {
+        "name": "Lyssna aktiv"
+      },
+      "google_cast_available": {
+        "name": "Google Cast-enheter"
+      }
+    }
   }
 }

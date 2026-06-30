@@ -1,40 +1,48 @@
 patch_settings:
   name: Patch settings
-  description: Send a partial JSON patch to the tablet (same keys as the LAN web GUI).
-  target:
-    entity:
-      integration: media_frame
+  description: Send a partial JSON patch to the tablet (same keys as LAN web GUI / PATCH_KEYS).
   fields:
+    entity_id:
+      name: Entity
+      description: Any Media Frame entity on the target tablet.
+      required: true
+      selector:
+        entity:
+          integration: media_frame
     patch:
       name: Settings patch
-      description: "Key/value object (for example slideshowEnabled and slideshowIdleSec)."
+      description: Key/value object, e.g. {"slideshowEnabled": true, "fullscreenAnimation": "vinyl"}
       required: true
       selector:
         object:
 
 call_action:
   name: Call integration action
-  description: POST an integration action (roon/transport, musicid/listenNow, and similar).
-  target:
-    entity:
-      integration: media_frame
+  description: POST a low-level integration action under /api/v1/ (advanced; prefer entities for appearance and toggles).
   fields:
+    entity_id:
+      name: Entity
+      required: true
+      selector:
+        entity:
+          integration: media_frame
     action:
       name: Action path
-      description: Path after /api/v1/
+      description: Path after /api/v1/, e.g. system/restartApp
       required: true
-      example: roon/transport
+      example: system/restartApp
       selector:
         text:
     body:
       name: JSON body
       description: Optional POST body object.
       required: false
+      default: {}
       selector:
         object:
     wait:
       name: Wait for result
-      description: Poll action-result until complete.
+      description: Poll action-result until complete (default true).
       required: false
       default: true
       selector:
