@@ -5,10 +5,36 @@ Excludes connection flows (pairing, hosts, tokens) and transport actions.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Literal
 
 SettingKind = Literal["switch", "select", "number", "text"]
+
+_CAMEL_TO_SNAKE = re.compile(r"(?<!^)(?=[A-Z])")
+
+
+def api_value_to_ha_state_key(value: str) -> str:
+    """Map REST enum token to homeassistant translation key [a-z0-9_]."""
+    snake = _CAMEL_TO_SNAKE.sub("_", value).lower()
+    return re.sub(r"[^a-z0-9_]+", "_", snake).strip("_")
+
+
+def build_select_option_maps(
+    options: tuple[str, ...],
+) -> tuple[tuple[str, ...], dict[str, str], dict[str, str]]:
+    """Return HA option keys, ha->api map, api->ha map (unique per option list)."""
+    ha_to_api: dict[str, str] = {}
+    for option in options:
+        base = api_value_to_ha_state_key(option)
+        key = base
+        suffix = 2
+        while key in ha_to_api and ha_to_api[key] != option:
+            key = f"{base}_{suffix}"
+            suffix += 1
+        ha_to_api[key] = option
+    api_to_ha = {api: ha for ha, api in ha_to_api.items()}
+    return tuple(ha_to_api.keys()), ha_to_api, api_to_ha
 
 
 @dataclass(frozen=True, slots=True)

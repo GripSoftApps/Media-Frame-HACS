@@ -197,8 +197,8 @@
         "state": {
           "off": "Av",
           "vinyl": "Vinyl",
-          "micVu": "Mic VU",
-          "vintageEqBars": "Vintage EQ"
+          "mic_vu": "Mic VU",
+          "vintage_eq_bars": "Vintage EQ"
         }
       },
       "music_mic_vu_gain": {
@@ -221,21 +221,21 @@
         "name": "Musik · Albumomslag stil",
         "state": {
           "default": "Standard",
-          "vinylAnimation": "Animerad"
+          "vinyl_animation": "Animerad"
         }
       },
       "music_eq_style": {
         "name": "Musik · EQ-stil",
         "state": {
           "off": "Av",
-          "naturalWaveColor": "Färgade",
-          "naturalWave": "Standard"
+          "natural_wave_color": "Färgade",
+          "natural_wave": "Standard"
         }
       },
       "music_eq_mode": {
         "name": "Musik · EQ-läge",
         "state": {
-          "liveMic": "Live mic",
+          "live_mic": "Live mic",
           "fake": "Fake"
         }
       },
@@ -396,7 +396,7 @@
       "misc_status_panel": {
         "name": "Statuspanel",
         "state": {
-          "statusBar": "Statusrad",
+          "status_bar": "Statusrad",
           "panel": "Panel",
           "off": "Av"
         }

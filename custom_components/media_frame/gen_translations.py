@@ -3,7 +3,12 @@
 import json
 from pathlib import Path
 
-from ha_settings import SELECT_STATE_LABELS_EN, SELECT_STATE_LABELS_SV, SETTING_DEFS
+from ha_settings import (
+    SELECT_STATE_LABELS_EN,
+    SELECT_STATE_LABELS_SV,
+    SETTING_DEFS,
+    api_value_to_ha_state_key,
+)
 
 ROOT = Path(__file__).parent
 
@@ -63,7 +68,10 @@ def build_entity_block(lang: str) -> dict:
         if definition.kind == "select":
             labels = labels_map.get(definition.key, {})
             if labels:
-                block["state"] = labels
+                block["state"] = {
+                    api_value_to_ha_state_key(api_key): label
+                    for api_key, label in labels.items()
+                }
         entity[definition.kind][definition.translation_key] = block
     return entity
 

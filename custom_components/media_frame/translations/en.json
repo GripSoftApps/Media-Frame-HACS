@@ -176,8 +176,8 @@
         "state": {
           "off": "Off",
           "vinyl": "Vinyl",
-          "micVu": "Mic VU",
-          "vintageEqBars": "Vintage EQ bars"
+          "mic_vu": "Mic VU",
+          "vintage_eq_bars": "Vintage EQ bars"
         }
       },
       "music_mic_vu_gain": {
@@ -200,21 +200,21 @@
         "name": "Music · Album cover style",
         "state": {
           "default": "Default",
-          "vinylAnimation": "Animated"
+          "vinyl_animation": "Animated"
         }
       },
       "music_eq_style": {
         "name": "Music · EQ style",
         "state": {
           "off": "Off",
-          "naturalWaveColor": "Colored",
-          "naturalWave": "Standard"
+          "natural_wave_color": "Colored",
+          "natural_wave": "Standard"
         }
       },
       "music_eq_mode": {
         "name": "Music · EQ mode",
         "state": {
-          "liveMic": "Live mic",
+          "live_mic": "Live mic",
           "fake": "Fake"
         }
       },
@@ -375,7 +375,7 @@
       "misc_status_panel": {
         "name": "Status panel",
         "state": {
-          "statusBar": "Status bar",
+          "status_bar": "Status bar",
           "panel": "Panel",
           "off": "Off"
         }
