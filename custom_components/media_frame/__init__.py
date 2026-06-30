@@ -8,7 +8,7 @@ from typing import Any
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_ENTITY_ID, Platform
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant, ServiceCall, SupportsResponse
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv, entity_registry as er
@@ -29,29 +29,35 @@ PLATFORMS: list[Platform] = [
 SERVICE_PATCH_SETTINGS = "patch_settings"
 SERVICE_CALL_ACTION = "call_action"
 
-PATCH_SCHEMA = cv.make_entity_service_schema(
+PATCH_SCHEMA = vol.Schema(
     {
         vol.Required("patch"): dict,
     }
 )
 
-CALL_ACTION_SCHEMA = cv.make_entity_service_schema(
+CALL_ACTION_SCHEMA = vol.Schema(
     {
         vol.Required("action"): cv.string,
-        vol.Optional("body", default={}): dict,
+        vol.Optional("body"): dict,
         vol.Optional("wait", default=True): cv.boolean,
     }
 )
 
 
-def _entry_for_entity(hass: HomeAssistant, entity_id: str) -> ConfigEntry:
+def _config_entry_from_service(hass: HomeAssistant, call: ServiceCall) -> ConfigEntry:
+    entity_ids = list(call.target.get("entity_id", [])) if call.target else []
+    if not entity_ids:
+        raise HomeAssistantError("service requires a Media Frame entity target")
     registry = er.async_get(hass)
-    if not (entry := registry.async_get(entity_id)):
-        raise HomeAssistantError(f"unknown entity {entity_id}")
-    entry_id = entry.config_entry_id
+    if not (entity_entry := registry.async_get(entity_ids[0])):
+        raise HomeAssistantError(f"unknown entity {entity_ids[0]}")
+    entry_id = entity_entry.config_entry_id
     if not entry_id or entry_id not in hass.data.get(DOMAIN, {}):
         raise HomeAssistantError("entity is not a Media Frame device")
-    return hass.config_entries.async_get_entry(entry_id)
+    entry = hass.config_entries.async_get_entry(entry_id)
+    if entry is None:
+        raise HomeAssistantError("Media Frame config entry not found")
+    return entry
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
@@ -70,16 +76,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if not hass.services.has_service(DOMAIN, SERVICE_PATCH_SETTINGS):
 
         async def handle_patch(call: ServiceCall) -> None:
-            entity_id = call.data[ATTR_ENTITY_ID]
-            cfg_entry = _entry_for_entity(hass, entity_id)
+            cfg_entry = _config_entry_from_service(hass, call)
             api_client = hass.data[DOMAIN][cfg_entry.entry_id]["api"]
             coord: MediaFrameCoordinator = hass.data[DOMAIN][cfg_entry.entry_id]["coordinator"]
             await api_client.patch_settings(call.data["patch"])
             await coord.async_request_refresh()
 
         async def handle_action(call: ServiceCall) -> dict[str, Any]:
-            entity_id = call.data[ATTR_ENTITY_ID]
-            cfg_entry = _entry_for_entity(hass, entity_id)
+            cfg_entry = _config_entry_from_service(hass, call)
             api_client = hass.data[DOMAIN][cfg_entry.entry_id]["api"]
             coord: MediaFrameCoordinator = hass.data[DOMAIN][cfg_entry.entry_id]["coordinator"]
             action = str(call.data["action"]).strip().lstrip("/")
