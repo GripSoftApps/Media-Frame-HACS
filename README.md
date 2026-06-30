@@ -1,6 +1,6 @@
 # Media Frame — Home Assistant (HACS)
 
-Home Assistant custom integration for the [**Media Frame**](https://github.com/GripSoftApps/Media-Frame) Android tablet app. Controls and monitors your tablet over the same LAN REST API as **Home Assistant / Web control** in the app Setup.
+Home Assistant custom integration for the [**Media Frame**](https://github.com/GripSoftApps/Media-Frame) Android tablet app. Controls and monitors your tablet over the same LAN REST API as **Web control** in the app Setup.
 
 [![Validate](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml/badge.svg)](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml)
 
@@ -11,16 +11,16 @@ Home Assistant custom integration for the [**Media Frame**](https://github.com/G
 1. HACS → **Integrations** → **Custom repositories** → add `https://github.com/GripSoftApps/Media-Frame-HACS` (category **Integration**)
 2. Install **Media Frame** → restart Home Assistant
 3. **Settings → Devices & services → Add integration → Media Frame**
-4. Enter tablet **IP**, **port** (default `8787`), and your **REST token**
+4. Enter tablet **IP**, **port** (default `8787`), and your **password** (same as Setup → Web control)
 
-### Enable REST on the tablet
+### Enable Web control on the tablet
 
-1. Setup → **Connected apps** → **Home Assistant / Web control**
-2. Turn REST control **on**
-3. Set a token (minimum **4 characters**) and save
+1. Setup → **Web control** (own item in the main hub menu — not under Connected apps)
+2. Turn **Enable / disable** on
+3. Set a **password** (minimum **4 characters**) and save
 4. Tablet and Home Assistant must be on the same LAN
 
-Play Store builds ship with REST **off** until you enable it. See [PLAYSTORE.md](custom_components/media_frame/PLAYSTORE.md).
+Play Store builds ship with Web control **off** until you enable it. See [PLAYSTORE.md](custom_components/media_frame/PLAYSTORE.md).
 
 ## Features
 

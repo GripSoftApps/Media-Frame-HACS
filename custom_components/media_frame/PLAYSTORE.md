@@ -14,9 +14,9 @@ Verified against `LocalRestControlModule.kt` (`isPlayStoreBlockedRestPath`) and 
 | LAN-only filter | Default on | Default on |
 | Token required when server on | ≥ 4 chars | ≥ 4 chars |
 
-**Conclusion:** Play Store **actively supports** the REST API the HA integration uses, but users must **opt in** (enable REST + set token).
+**Conclusion:** Play Store **actively supports** the REST API the HA integration uses, but users must **opt in** (enable **Web control** in Setup and set the password).
 
-Group control can also start the HTTP server when `groupControlEnabled` is true even if REST toggle is off — HA still needs a valid token.
+Group control can also start the HTTP server when `groupControlEnabled` is true even if Web control is off — HA still needs a valid password.
 
 ## Endpoints the integration uses
 
@@ -53,10 +53,10 @@ Play Store builds strip YouTube keys from persisted settings. Patching `youtubeE
 ## HA user checklist (Play Store)
 
 1. Install Media Frame from Google Play
-2. Setup → enable **Home Assistant / Web control**
-3. Set token (save settings)
+2. Setup → **Web control** → turn **Enable / disable** on
+3. Set password (save settings)
 4. Confirm from a PC on LAN:  
    `curl -H "Authorization: Bearer YOUR_TOKEN" http://TABLET_IP:8787/api/v1/health`
-5. Add integration in HA with same host/port/token
+5. Add integration in HA with same host/port/password
 
-If step 4 returns `401`, fix the token. If connection refused, REST is off or wrong port/firewall.
+If step 4 returns `401`, fix the password/token. If connection refused, Web control is off or wrong port/firewall.

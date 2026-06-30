@@ -3,17 +3,17 @@
     "step": {
       "user": {
         "title": "Media Frame",
-        "description": "Connect to a Media Frame tablet on your LAN. Enable **Home Assistant / Web control** in Setup and set a REST token (at least 4 characters).",
+        "description": "Connect to a Media Frame tablet on your LAN. In Setup → **Web control**, turn **Enable / disable** on and set a password (at least 4 characters).",
         "data": {
           "host": "Tablet IP address",
-          "port": "REST port",
-          "token": "REST bearer token"
+          "port": "TCP port (default 8787)",
+          "token": "Password (same as Setup → Web control)"
         }
       }
     },
     "error": {
-      "cannot_connect": "Cannot reach the tablet. Check IP, port, Wi-Fi, and that REST control is enabled.",
-      "invalid_auth": "Invalid token. Use the same bearer token as in Setup → Web control.",
+      "cannot_connect": "Cannot reach the tablet. Check IP, port, Wi-Fi, and that Web control is enabled in Setup.",
+      "invalid_auth": "Invalid password. Use the same value as in Setup → Web control.",
       "unknown": "Unexpected error during setup."
     },
     "abort": {
