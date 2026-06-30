@@ -37,8 +37,9 @@ Play Store builds ship with REST **off** until you enable it. See [PLAYSTORE.md]
 
 ```yaml
 service: media_frame.patch_settings
-data:
+target:
   entity_id: sensor.media_frame_battery
+data:
   patch:
     slideshowEnabled: true
     slideshowIdleSec: 120
@@ -46,8 +47,9 @@ data:
 
 ```yaml
 service: media_frame.call_action
-data:
+target:
   entity_id: button.media_frame_roon_pause
+data:
   action: roon/transport
   body:
     control: pause
