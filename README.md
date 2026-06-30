@@ -4,14 +4,18 @@ Home Assistant custom integration for the [**Media Frame**](https://github.com/G
 
 [![Validate](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml/badge.svg)](https://github.com/GripSoftApps/Media-Frame-HACS/actions/workflows/validate.yaml)
 
+**Current release: v2.0.1**
+
 ## Quick install (HACS)
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=GripSoftApps&repository=Media-Frame-HACS&category=integration)
 
 1. HACS → **Integrations** → **Custom repositories** → add `https://github.com/GripSoftApps/Media-Frame-HACS` (category **Integration**)
-2. Install **Media Frame** → restart Home Assistant
-3. **Settings → Devices & services → Add integration → Media Frame**
+2. Install or **update** **Media Frame** → restart Home Assistant
+3. **Settings → Devices & services → Add integration → Media Frame** (first time only)
 4. Enter tablet **IP**, **port** (default `8787`), and your **password** (same as Setup → Web control)
+
+If HACS still offers an old version: **HACS → ⋮ → Check for updates**, or remove and reinstall the integration, then restart HA.
 
 ### Enable Web control on the tablet
 
@@ -22,18 +26,31 @@ Home Assistant custom integration for the [**Media Frame**](https://github.com/G
 
 Play Store builds ship with Web control **off** until you enable it. See [PLAYSTORE.md](custom_components/media_frame/PLAYSTORE.md).
 
-## Features
+## Features (v2)
 
-| Platform | Examples |
-|----------|----------|
+| Platform | Purpose |
+|----------|---------|
+| **Switch** | Slideshow, integration on/off, appearance toggles |
+| **Select** | Music/video appearance (backdrop, full-screen animation, EQ, metadata, …) |
+| **Number** | Slideshow timers, display underscan, adaptive brightness |
+| **Text** | Clock/metadata colors, night-mode times |
 | **Sensor** | App version, battery, CPU, Roon zones, Lyssna mic level |
-| **Binary sensor** | REST online, slideshow, Roon / Apple TV / Cast / Lyssna |
-| **Switch** | Slideshow, Roon, Apple TV, Lyssna, Google Cast |
-| **Number** | Slideshow idle / image duration |
-| **Button** | Roon connect, play/pause, Lyssna now, Cast discover, restart app |
-| **Services** | `media_frame.patch_settings`, `media_frame.call_action` |
+| **Binary sensor** | REST online, integration connection status |
+| **Services** | `media_frame.patch_settings`, `media_frame.call_action` (advanced) |
+
+Not included: Roon play/pause, pairing/connect buttons, remember-last-played, or deep Setup keys.
+
+Full entity list: [custom_components/media_frame/README.md](custom_components/media_frame/README.md).
 
 ## Example automation
+
+```yaml
+service: select.select_option
+target:
+  entity_id: select.sm_t710_music_fullscreen_animation
+data:
+  option: vinyl
+```
 
 ```yaml
 service: media_frame.patch_settings
@@ -43,16 +60,6 @@ data:
   patch:
     slideshowEnabled: true
     slideshowIdleSec: 120
-```
-
-```yaml
-service: media_frame.call_action
-target:
-  entity_id: button.media_frame_roon_pause
-data:
-  action: roon/transport
-  body:
-    control: pause
 ```
 
 ## Manual install
